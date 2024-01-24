@@ -1,0 +1,338 @@
+%%%%%% !TEX program = xelatex x2 + bibtex + xelatex
+\documentclass[oneside,doctor]{zjuthesis}
+% 默认为单面模式，如需打印请把oneside换为twoside，博士请将master换为doctor
+%==============================================================
+%==============================================================
+
+%自己需要增加什么 package 或修改什么设置的话，都放在这里吧。
+\usepackage{enumerate}
+\usepackage[perpage,symbol]{footmisc}
+\setfnsymbol{wiley}
+\usepackage{hypbmsec}
+\usepackage{dsfont}
+\usepackage{listings}
+\usepackage{xcolor}
+%\usepackage{titletoc}
+%\usepackage{lineno}
+\usepackage{listings}
+\usepackage{lstlinebgrd}
+%\usepackage{draftwatermark} 
+%\SetWatermarkText{DRAFT} %add watermark text 
+%\SetWatermarkScale{1} %specify the size of the text
+%\SetWatermarkLightness{0.9}
+\usepackage{subfigure}
+\usepackage[subfigure]{tocloft}
+
+%\renewcommand\cftchapafterpnum{\vskip0pt}
+%\renewcommand\cftsecafterpnum{\vskip0pt}
+%\renewcommand{\cfttabfont}{\xiaosan\bfseries\Fangsong}
+%\usepackage{overpic}
+\usepackage{float} % \begin{lstlisting}[float,floatplacement=b]
+% Add your keywords here, and have this in a separate file
+% and include it in your preamble
+\lstdefinestyle{my-fortran-style}{
+    language=[90]Fortran,
+    basicstyle=\tiny, %\footnotesize, % 字体大小
+    numbers=left, 
+    numberstyle= \tiny, %\footnotesize, % 编号大小
+    keywordstyle= \color{blue!100},
+    commentstyle= \color{gray!100}, 
+    backgroundcolor = \color{white!10},    
+    frame=tb, % 阴影效果 tb, single, shadowbox, trBL, fttt
+    rulesepcolor= \color{ red!20!green!20!blue!20} ,
+    escapeinside=``, % 英文分号中可写入中文
+    xleftmargin=2em,xrightmargin=1.5em, aboveskip=1em,
+    framexleftmargin=2.5em,
+    escapeinside={\%*}{*)},
+    columns=fixed
+}
+%\lstset{
+%    language=[90]Fortran,
+%    basicstyle=\tiny, %\footnotesize, % 字体大小
+%    numbers=left, 
+%    numberstyle= \tiny, %\footnotesize, % 编号大小
+%    keywordstyle= \color{blue!100},
+%    commentstyle= \color{green!100}, 
+%    frame=shadowbox, % 阴影效果
+%    rulesepcolor= \color{ red!20!green!20!blue!20} ,
+%    escapeinside=``, % 英文分号中可写入中文
+%    xleftmargin=2em,xrightmargin=2em, aboveskip=1em,
+%    framexleftmargin=2em
+%}
+\renewcommand{\lstlistlistingname}{程序汇总}
+\renewcommand{\lstlistingname}{范例}
+%\titlecontents{section}[4em]{}{\contentslabel{2.5em}}{\hspace*{-2em}}{~\titlerule*[0.6pc]{$.$}~\contentspage} % section 目录缩进
+%\titlecontents{subsection}[6.5em]{}{\contentslabel{2.5em}}{\hspace*{-2em}}{~\titlerule*[0.6pc]{$.$}~\contentspage} % subsection 目录缩进
+\usepackage[titletoc]{appendix}
+\usepackage{tikz}
+\usetikzlibrary{fit}
+\tikzset{every label/.style={font=\small,inner sep=1.5pt}}
+\newcommand{\stencilpt}[4][]{\node[circle,fill=white,draw=blue, scale=2.09, label={below:#4},#1] at (#2) (#3) {}}
+
+%\usepackage[hidelinks]{hyperref} % Haowei added for superlink
+\usepackage[colorlinks,
+            linkcolor=blue,
+            anchorcolor=blue,
+            citecolor=blue,
+            urlcolor=blue,
+            bookmarks=true,
+            bookmarksnumbered=true%,
+            %linktocpage
+            ]{hyperref} % Haowei added for superlink
+%\hypersetup{linktoc = all}
+% \usepackage[super,square]{natbib} % Haowei added
+% \renewcommand\refname{参考文献} % Haowei added
+
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\usepackage{emptypage} % method1: make even page empty when start new chapter
+
+%\usepackage{nextpage} % method2: make list start at odd pages, https://latex.org/forum/viewtopic.php?t=21800
+
+\makeatletter
+\renewcommand\@pnumwidth{1.5em} % Parts' page numbers greater than 100 are misaligned in my ToC % https://tex.stackexchange.com/questions/381162/parts-page-numbers-greater-than-100-are-misaligned-in-my-toc
+\makeatother
+
+%==============================================================
+%==============================================================
+%\includeonly{chapters/chapter1, chapters/chapter2, chapters/chapter3} %只编译某一章节
+\begin{document}
+%==============================================================
+%==============================================================
+%这部分是论文封面、题名页需要的信息，请根据《研究生学位论文编写规则》自行修改
+%\raggedbottom %在twoside模式下使用，页面不会强制在最低端拉伸对齐，页面下部有可能留白
+%\flushbottom %在twoside模式默认开启，页面会强制在最低端拉伸对齐，段落间距可能增大
+%论文分类号
+\renewcommand{\zjuclass}{O534}%http://www.ztflh.com/?c=10092
+
+%论文密级
+\renewcommand{\zjusecurity}{非涉密}
+
+
+\renewcommand{\zjutitlec}{XXXXXXXXXXXX}%中文论文题目
+\renewcommand{\zjutitlecb}{XXXXXXXXX}%中文论文题目第二行,若无请留空
+\renewcommand{\zjutitlecc}{}%中文论文题目第三行,若无请留空
+\renewcommand{\zjutitlee}{XXXXXXXXXXXX}%英文论文题目
+\renewcommand{\zjutitleeb}{XXXXXXXXX}%英文论文题目第二
+\renewcommand{\zjutitleec}{}%英文论文题目第二行,若无请留空
+%作者姓名
+\renewcommand{\zjuauthor}{XXX}
+
+%作者学号
+\renewcommand{\zjuauthorid}{xxxxxxxx}
+
+%指导教师 
+\renewcommand{\zjumentor}{XXX ~ 教授}
+
+%合作导师（如果有的话请取消注释）
+%\renewcommand{\zjumentorco}{}
+
+%专业名称
+\renewcommand{\zjumajor}{等离子体物理}
+
+%研究方向
+\renewcommand{\zjusubject}{磁约束聚变}
+
+%所在学院
+\renewcommand{\zjuschool}{物理学院}
+
+%提交日期
+\renewcommand{\zjuapprovaldate}{202X年X月}
+
+%答辩日期
+\renewcommand{\zjudefencedatec}{202X年X月}
+\renewcommand{\zjudefencedatee}{Xxxx 2022}
+
+%论文评阅人（格式：姓名 ~ 职称 ~ 单位）
+%\renewcommand{\zjurevieweronec}{陈某某 ~ 教授 ~ XX大学}
+%\renewcommand{\zjurevieweronee}{Moumou Chen ~Prof. ~XX University}
+
+%\renewcommand{\zjureviewertwoc}{张某某 ~ 教授 ~ XX大学}
+%\renewcommand{\zjureviewertwoe}{Moumou Zhang ~Prof. ~XX University}
+
+%\renewcommand{\zjureviewerthreec}{李某某 ~ 教授 ~ XX大学}
+%\renewcommand{\zjureviewerthreee}{Moumou Li ~Prof. ~XX University }
+
+%\renewcommand{\zjureviewerfourc}{吴某某 ~ 教授 ~ XX大学}
+%\renewcommand{\zjureviewerfoure}{Moumou Wu ~Prof. ~XX University}
+
+%\renewcommand{\zjureviewerfivec}{杨某某 ~ 教授 ~ XX大学}
+%\renewcommand{\zjureviewerfivee}{Moumou Yang ~Prof. ~XX University}
+\renewcommand{\zjurevieweronec}{}
+\renewcommand{\zjurevieweronee}{}
+
+\renewcommand{\zjureviewertwoc}{}
+\renewcommand{\zjureviewertwoe}{}
+
+\renewcommand{\zjureviewerthreec}{}
+\renewcommand{\zjureviewerthreee}{}
+
+\renewcommand{\zjureviewerfourc}{}
+\renewcommand{\zjureviewerfoure}{}
+
+\renewcommand{\zjureviewerfivec}{}
+\renewcommand{\zjureviewerfivee}{}
+
+%答辩委员会（姓名\职称\单位）
+\renewcommand{\zjucommitteemainc}{}
+\renewcommand{\zjucommitteemaine}{}
+
+\renewcommand{\zjucommitteeonec}{}
+\renewcommand{\zjucommitteeonee}{}
+
+\renewcommand{\zjucommitteetwoc}{}
+\renewcommand{\zjucommitteetwoe}{}
+
+\renewcommand{\zjucommitteethreec}{}
+\renewcommand{\zjucommitteethreee}{}
+
+\renewcommand{\zjucommitteefourc}{}
+\renewcommand{\zjucommitteefoure}{}
+
+\renewcommand{\zjucommitteefivec}{}
+\renewcommand{\zjucommitteefivee}{}
+
+
+%==============================================================
+% 这部分除了“取舍”外，不需要自己修改，必要信息都已在上面设置。
+\xiaosi
+%封面
+\input{chapters/cover}
+%中文题名页
+\input{chapters/titlec}
+%英文题名页
+\input{chapters/titlee} % 硕士论文请根据需要取舍。
+%独创性声明
+\input{chapters/announce}
+
+%\renewcommand{\cftpnumalign}{r} % right aligned page numbers
+\setlength{\cftfigindent}{0pt} % left aligned fig entries
+\setlength{\cfttabindent}{0pt} % left aligned fig entries
+\renewcommand{\cftloftitlefont}{\xiaosan\bfseries\Fangsong}
+\renewcommand{\cftlottitlefont}{\xiaosan\bfseries\Fangsong}
+\renewcommand{\cfttoctitlefont}{\xiaosan\bfseries\Fangsong}
+\renewcommand*{\addvspace}[1]{}%single space within entries and double space between
+\setlength{\cftbeforechapskip}{0cm}
+\setlength{\cftbeforesecskip}{0cm}
+\setlength{\cftbeforesubsecskip}{0cm}
+%\renewcommand\cftchapdotsep{\cftdotsep}
+%\renewcommand\cftchapleader{\bfseries\cftdotfill{\cftchapdotsep}}
+\renewcommand{\cftchapfont}{\normalfont\bfseries\Fangsong}% titles in bold
+\renewcommand{\cftchappagefont}{\normalfont\bfseries}% page numbers in bold
+\renewcommand{\cftdotsep}{5}
+\renewcommand{\cftchapleader}{\bfseries\cftdotfill{\cftsecdotsep}}% dot leaders in bold
+
+\frontmatter
+\pagenumbering{Roman}
+
+%勘误页
+%\input{errata}  % 请根据需要取舍。
+%致谢
+%\input{chapters/thanks}
+\newpage
+%序言
+%\input{preface} % 请根据需要取舍。
+%中文摘要
+\input{chapters/absc}
+
+%英文摘要
+\input{chapters/abse}
+\input{chapters/suoxie} % suoxie
+
+%==============================================================
+%这部分不需要自己修改。
+
+%插图和附表清单
+
+\newpage
+\cleardoublepage % make list start at odd pages
+\phantomsection
+\addcontentsline{toc}{chapter}{表目录}
+%\cleartooddpage % \usepackage{nextpage}, make list start at odd pages, https://latex.org/forum/viewtopic.php?t=21800
+\listoftables
+%\chaptermark{表目录}
+
+%\addcontentsline{toc}{chapter}{图目录}
+%\listoffigures
+%\chaptermark{图目录}
+\newpage
+\cleardoublepage  % make list start at odd pages
+\phantomsection
+\addcontentsline{toc}{chapter}{图目录}
+%\cleartooddpage % \usepackage{nextpage}, make list start at odd pages, https://latex.org/forum/viewtopic.php?t=21800
+\listoffigures
+%\chaptermark{图目录}
+
+%术语表
+% \printnomenclature
+% \chaptermark{术语表}
+%==============================================================
+
+%目次页
+\newpage
+\cleardoublepage  % make list start at odd pages
+\phantomsection
+%\cleartooddpage % \usepackage{nextpage}, make list start at odd pages, https://latex.org/forum/viewtopic.php?t=21800
+\pdfbookmark{\contentsname}{toc}
+\tableofcontents
+% \addcontentsline{toc}{chapter}{目录} % Haowei added, this has dot, page num, and superlink.
+%\addtocontents{toc}{\noindent{目录}\par} % Haowei added, this has no dot, page num, and superlink.
+\addtocontents{toc}{\protect\chaptermark{目\quad 次}}
+% \addtocontents{toc}{\protect\contentsline {chapter}{\protect\makebox[\linewidth]{目录\hfill}\vspace{-2em}}{}} % Haowei annoted, this cannot work well with hyperref together
+\mainmatter
+
+%==============================================================
+%\linenumbers % 开始添加行号
+\setlength\arraycolsep{2pt} % 设置eqnarray中‘=’前后的空距
+\include{chapters/chapter1} % introduction
+\include{chapters/chapter2} % literature
+\include{chapters/chapter3} % code
+\include{chapters/chapter4} % EP + MHD
+\include{chapters/chapter5} % TM + TAE
+\include{chapters/chapter6} % summary
+%\addtocontents{toc}{\noindent{附录}\par} % Haowei added, this has no dot, page num, and superlink. I want it show after chapter6, but I donot know why I have to put it before the chapter6???????
+%==============================================================
+%这也是个不需要自己修改的部分。
+%\appendix %设置附录, 章节格式设置, refer to zjuthesis.cls
+\titleformat{\chapter}[hang]{\xiaosan\bfseries\Fangsong}{附录\,\thechapter}{1em}{}{}%小三号仿宋加粗，章定义
+%\appendixpageoff
+\begin{appendices}
+\include{chapters/appendixA} % CLT与CLT-K代码的GPU移植介绍
+\include{chapters/appendixB} % CLT代码的实C验位型拓展和共振磁扰动模块
+\include{chapters/appendixC} % CLT-K代码的电流和压强耦合模型拓展以及等价性校验
+\end{appendices}
+\backmatter %结束章节自动编号
+
+%参考文献（习惯使用bibtex的可以修改）
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{参考文献} % 解决目录中没有相应的参考文献的条目问题
+\chaptermark{参考文献}
+% \input{chapters/bib}
+%\setlength\bibindent{200em}
+%\setlength\bibhang{0pt}
+%\setlength{\parindent}{-200in}
+%\setlength{\leftskip}{200in}
+%\noindent
+%\setlength{\parindent}{100pt}
+\makeatletter %https://tex.stackexchange.com/questions/21308/left-aligning-latex-bibliography-display
+\renewcommand{\@biblabel}[1]{[#1]\hfill} %https://tex.stackexchange.com/questions/21308/left-aligning-latex-bibliography-display
+\makeatother %https://tex.stackexchange.com/questions/21308/left-aligning-latex-bibliography-display
+%\renewcommand\bibpreamble{\vspace{1.1\baselineskip}} % choose a suitable vert. skip
+\bibliography{chapters/ref} % Haowei added
+
+%附录
+%  \include{chapters/appe}
+
+% 出版物
+% \input{chapters/publication}
+
+%致谢
+\include{chapters/thanks}
+
+% 作者简历
+\include{chapters/resume}
+\newpage\null\thispagestyle{empty}\newpage
+%==============================================================
+%==============================================================
+\end{document}

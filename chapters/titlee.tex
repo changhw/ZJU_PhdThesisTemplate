@@ -1,0 +1,56 @@
+%%% 英文标题页
+
+\newpage
+\cleardoublepage  % make list start at odd pages
+\thispagestyle{empty}
+
+\vspace{10mm}%\vspace{5mm}
+
+\begin{center}
+\xunderline[115mm]{\linespread{1.1}\xiaoer\TNR\bfseries\centerline\zjutitlee}
+\ifthenelse{\equal\zjutitleeb{}}{}{\\[2mm]\xunderline[115mm]{\linespread{1.1}\xiaoer\Fangsong\bfseries\centerline\zjutitleeb}}
+\ifthenelse{\equal\zjutitleec{}}{}{\\[2mm]\xunderline[115mm]{\linespread{1.1}\xiaoer\Fangsong\bfseries\centerline\zjutitleec}}
+\end{center}
+
+\vspace{5.5mm}%\vspace{5mm}
+
+\begin{center}
+  \includegraphics[width=21mm]{images/zjulogo.pdf}%校徽
+  %\includegraphics[width=21mm]{images/standxb.png}%校徽
+\end{center}
+
+\vspace{-3mm}%\vspace{-6mm}
+
+\begin{tabbing}
+\hspace{20mm} \= \sanhao\bfseries Supervisor's signature: \= \underline{\makebox[5cm]{}}\kill \\
+              \> \hspace{7mm} \sanhao\bfseries Author's signature: \> \underline{\makebox[5cm]{}} \\[9mm]
+              \> \sanhao\bfseries Supervisor's signature: \> \underline{\makebox[5cm]{}}
+\end{tabbing}
+
+\vspace{8mm}%\vspace{8mm}
+
+\begin{tabbing}
+\sihao External Reviewers: \= \underline{\makebox[10.8cm]{\sihao\zjurevieweronee}} \\
+                    \> \underline{\makebox[10.8cm]{\sihao\zjureviewertwoe}} \\
+                    \> \underline{\makebox[10.8cm]{\sihao\zjureviewerthreee}} \\
+                    \> \underline{\makebox[10.8cm]{\sihao\zjureviewerfoure}} \\
+                    \> \underline{\makebox[10.8cm]{\sihao\zjureviewerfivee}} \\[12mm]%[8mm]
+\sihao Examining Committe Chairperson: \= \\
+\hspace{41mm} \= \underline{\makebox[10.8cm]{\sihao\zjucommitteemaine}} \\
+\sihao Examining Committe Members: \= \\
+\hspace{41mm} \= \underline{\makebox[10.8cm]{\sihao\zjucommitteeonee}} \\
+             \> \underline{\makebox[10.8cm]{\sihao\zjucommitteetwoe}} \\
+             \> \underline{\makebox[10.8cm]{\sihao\zjucommitteethreee}} \\
+             \> \underline{\makebox[10.8cm]{\sihao\zjucommitteefoure}} \\
+             \> \underline{\makebox[10.8cm]{\sihao\zjucommitteefivee}}
+\end{tabbing}
+
+\vspace{3mm}%\vspace{6mm}
+
+\begin{tabbing}
+\hspace{28mm} \= \sihao Date of oral defence: \underline{\makebox[5cm]{\sihao\zjudefencedatee}}
+\end{tabbing}
+
+\ifthenelse{\equal{\zjuside}{T}}{%
+  %\newpage\mbox{}%
+  \thispagestyle{empty}}{}

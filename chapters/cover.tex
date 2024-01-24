@@ -1,0 +1,57 @@
+%%% 封面
+
+\thispagestyle{empty}
+
+\begin{tabbing}
+\Songti\xiaosi 分类号： \= \underline{\makebox[4cm]{\xiaosi\zjuclass}} \= \hspace{4cm} \= \Songti\xiaosi 单位代码：\underline{\makebox[3cm]{10335}} \\
+\Songti\xiaosi 密\hspace{4.22mm}级： \> \underline{\makebox[4cm]{\zjusecurity}} \> \> \Songti\xiaosi 学\hspace{8.44mm}号：\underline{\makebox[3cm]{\zjuauthorid}}
+\end{tabbing}
+
+\vspace{5mm}
+
+\begin{center}
+  \includegraphics[width=52mm]{images/zjuname.pdf}%浙江大学
+   %\includegraphics[width=52mm]{images/zjdx}%浙江大学
+\end{center}
+
+\ifthenelse{\equal{\zjudegree}{D}}{\centerline{\Songti\xiaoyi 博士学位论文}}{}
+\ifthenelse{\equal{\zjudegree}{M}}{\centerline{\Songti\xiaoyi 硕士学位论文}}{}
+
+\vspace{4mm}
+
+\begin{center}
+  \includegraphics[width=21mm]{images/zjulogo.pdf}%校徽
+  %\includegraphics[width=21mm]{images/standxb.png}%校徽
+\end{center}
+
+\vspace{8mm}
+
+\begin{tabbing}
+\Songti\sanhao\bfseries 中文论文题目：\=\hspace{-4mm}\xunderline[112mm]{\linespread{1.1}\bfseries\Fangsong\xiaoer\centerline\zjutitlec}
+\ifthenelse{\equal\zjutitlecb{}}{}{\\[2mm]\>\hspace{-4mm}\xunderline[112mm]{\linespread{1.1}\bfseries\Fangsong\xiaoer\centerline\zjutitlecb}}
+\ifthenelse{\equal\zjutitlecc{}}{}{\\[2mm]\>\hspace{-4mm}\xunderline[112mm]{\linespread{1.1}\bfseries\Fangsong\xiaoer\centerline\zjutitlecc}}
+\\[2mm]\Songti\sanhao\bfseries 英文论文题目：\>\hspace{-4mm}\xunderline[112mm]{\linespread{1.1}\bfseries\sanhao\TNR\centerline\zjutitlee}
+\ifthenelse{\equal\zjutitleeb{}}{}{\\[2mm]\>\hspace{-4mm}\xunderline[112mm]{\linespread{1.1}\bfseries\sanhao\TNR\centerline\zjutitleeb}}
+\ifthenelse{\equal\zjutitleec{}}{}{\\[2mm]\>\hspace{-4mm}\xunderline[112mm]{\linespread{1.1}\bfseries\sanhao\TNR\centerline\zjutitleec}}
+\end{tabbing}
+
+\vspace{15mm}
+
+\begin{tabbing}
+\hspace{25mm} \Songti\sihao 申 \hspace{-2mm} \= \Songti\sihao 请人姓名： \= \underline{\makebox[7cm]{\sihao\zjuauthor}} \\[2mm]
+              \> \Songti\sihao 指导教师： \> \underline{\makebox[7cm]{\sihao\zjumentor}} \\[2mm]
+              %\> \Songti\sihao合作导师： \> \underline{\makebox[6cm]{\sihao\zjumentorco}} \\[2mm]
+              \> \Songti\sihao 专业名称： \> \underline{\makebox[7cm]{\sihao\zjumajor}} \\[2mm]
+              \> \Songti\sihao 研究方向： \> \underline{\makebox[7cm]{\sihao\zjusubject}} \\[2mm]
+              \> \Songti\sihao 所在学院： \> \underline{\makebox[7cm]{\sihao\zjuschool}}
+\end{tabbing}
+
+\vspace{10mm}
+
+\begin{tabbing}
+\hspace{30mm} \= \Songti\xiaosan\bfseries 论文提交日期： \= \underline{\makebox[49mm]{\Songti\xiaosan\bfseries\zjuapprovaldate}}
+\end{tabbing}
+
+\ifthenelse{\equal{\zjuside}{T}}{%
+  %\newpage\mbox{}%
+  \thispagestyle{empty}}{}
